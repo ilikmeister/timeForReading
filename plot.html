@@ -1,0 +1,61 @@
+<html>
+<head>
+  <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+  <script type='text/javascript'>
+    google.load('visualization', '1.1', {packages: ['line']});
+    google.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+      var options = {
+	chart: {
+	    lineWidth: 20,
+	    title: 'Comparing buffersize to execution time'
+	},
+	vAxis: {
+	  title: 'milliseconds',
+	},
+        width:  1000,
+        height: 600
+      };
+      var chart = new google.charts.Line(document.getElementById('linechart_material'));
+      var data = new google.visualization.DataTable();
+
+      data.addColumn('number', 'buffersize (bytes)');
+      data.addColumn('number', 'milliseconds');
+
+      data.addRows([
+	[200, 1149],
+	[400, 578],
+	[600, 468],
+	[800, 335],
+	[1000, 298],
+	[1200, 281],
+	[1400, 267],
+	[1600, 257],
+	[1800, 255],
+	[2000, 245],
+	[2200, 237],
+	[2400, 227],
+	[2600, 222],
+	[2800, 213],
+	[3000, 210],
+	[3200, 198],
+	[3400, 207],
+	[3600, 204],
+	[3800, 196],
+	[4000, 224],
+	[4200, 221],
+	[4400, 244],
+	[4600, 248],
+	[4800, 248],
+	[5000, 251],
+      ]);
+      chart.draw(data, options);
+    }
+  </script>
+</head>
+
+<body>
+  <div id='linechart_material' style='margin: 4em;'></div>
+</body>
+</html>
